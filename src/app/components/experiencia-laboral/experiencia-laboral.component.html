@@ -1,0 +1,31 @@
+<ion-content>
+  <ion-list *ngIf="listaExperienciasLaborales">
+    <ion-item *ngFor='let explab of listaExperienciasLaborales; index as i'>
+      <ion-label>
+          <h2>Empresa {{ explab.empresa }}</h2>
+          <h3>Desde {{ explab.anioInicio }}&nbsp;
+            <span  *ngIf="explab.trabajaAlli"> hasta hoy</span>
+            <span  *ngIf="!explab.trabajaAlli"> hasta {{ explab.anioTermino }}</span>
+          </h3>
+          <h3>
+            Cargo:&nbsp;
+            <span *ngIf="explab.cargo">{{ explab.cargo }}</span>
+            <span>
+              <ion-fab horizontal="end" slot="fixed">
+                <ion-fab-button size="small" color="danger" (click)="quitarExperienciaLaboral(i)">
+                  <ion-icon name="remove-circle-outline"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+            </span>
+          </h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <br><br>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button color="success" (click)="solicitarExperienciaLaboral()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
